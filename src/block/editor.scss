@@ -1,0 +1,38 @@
+/**
+ * #.# Editor Styles
+ *
+ * CSS for just Backend enqueued after style.scss
+ * which makes it higher in priority.
+ */
+
+.wp-block-cgb-block-algori-image-video-slider  {
+  
+}
+
+.algori-image-video-slider-slide-text-block-sub-heading-editor {
+	position: absolute !important;
+    margin-top: 35%;
+    left: 50%;
+    color: white !important;
+    transform: translate(-50%, -50%) !important;
+}
+
+.algori-image-video-slider-slide-text-block-paragraph-editor {
+    position: absolute !important;
+    margin-top: 40%;
+    left: 50%;
+    color: white !important;
+    transform: translate(-50%, -50%) !important;
+}
+
+.algori-image-video-slider-slide-text-block-cta-editor {
+	position: absolute !important;
+    margin-top: 45%;
+    left: 50%;
+    color: white !important;
+    transform: translate(-50%, -50%) !important;
+}
+
+.editor-rich-text__inline-toolbar {
+	top: -50px !important;
+}
