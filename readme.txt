@@ -17,7 +17,7 @@ Algori Image and Video Slider is a Gutenberg Block Plugin that enables you easil
 
 Capture your site visitors' attention with compelling image slideshows, hero images/videos, header sliders and image carousels. **This will boost user engagement and increase revenue for your site**.
 
-This free plugin has a lot to offer. Even more can be found in the Premium version of this Plugin, please see [all features of the Premium plugin here](https://github.com/kevinbazira/algori-image-and-video-slider-pro-for-wordpress-gutenberg#features).
+This free plugin has a lot to offer. Even more can be found in the Premium version of this Plugin, please see [all features of the Premium plugin here](http://www.kevinbazira.com/blog/article/algori-image-and-video-slider-pro-for-wordpress-gutenberg#features).
 
 == Features of the free image slider ===
 
@@ -71,8 +71,8 @@ Have a look at the [Premium Plugin here](http://www.kevinbazira.com/blog/article
 	- Hide/Show Navigation Dots
 	- Hide/Show Navigation Arrows
 	- Enable/Disable Slideshow Autoplay
-* Click "Publish" to view your new web page with an image slider.
-* Congratulations :D
+5. Click "Publish" to view your new web page with an image slider.
+6. Congratulations :D
 
 == Screenshots ==
 
