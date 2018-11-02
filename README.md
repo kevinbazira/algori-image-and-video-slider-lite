@@ -12,10 +12,6 @@ Requires at least: WP 4.9.6
 
 Algori Image and Video Slider is a Gutenberg Block Plugin that enables you easily add image and video sliders to your website.
 
-<p align="center">
-  <img src="https://ps.w.org/algori-image-video-slider/assets/screenshot-1.gif" alt="Algori Video & Image Slider">
-</p>
-
 # Description 
 
 Algori Image and Video Slider is a Gutenberg Block Plugin that enables you easily add image and video sliders to your website. 
