@@ -51,7 +51,7 @@ This free plugin has a lot to offer. Even more can be found in the Premium versi
 
 Most of these features are enabled by default and can't be disabled or adjusted in the free version. We released a Premium Plugin with many more exciting features that will enable you to adjust all the slider settings as you wish.
 
-Have a look at the [Premium Plugin here](http://www.kevinbazira.com/blog/article/algori-image-and-video-slider-pro-for-wordpress-gutenberg).
+Have a look at the [Premium Plugin here](https://codecanyon.net/item/algori-image-and-video-slider-pro-for-wordpress-gutenberg/22818690).
 
 == Installation ==
 
