@@ -112,6 +112,7 @@ See more details here [Premium Plugin features](http://www.kevinbazira.com/blog/
 * Initial Release
 
 Algori Video and Image Slider WordPress Plugin, Copyright 2018 Kevin Bazira
+<br/>
 Algori Video and Image Slider is distributed under the terms of the GNU GPL
 
 
