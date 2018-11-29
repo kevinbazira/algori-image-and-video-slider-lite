@@ -286,7 +286,7 @@ registerBlockType( 'cgb/block-algori-image-video-slider', {
 						className={ className }
 						labels={ {
 							title: __('\u00A0Image Slider' ),
-							name: __( 'images or videos' ),
+							instructions: __( 'Drag images or videos, upload new ones or select files from your library.' ),
 						} }
 						onSelect={ onSelectImages }
 						accept="video/*, image/*"
