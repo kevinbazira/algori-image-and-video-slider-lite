@@ -9,11 +9,11 @@ Stable tag: 1.0.1
 License: GNU General Public License v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.en.html
 
-Algori Video and Image Slider is a Gutenberg Block Plugin that enables you easily add image and video sliders to your website.
+Algori Video and Image Slider is a Gutenberg Block Plugin that enables you easily add video and image sliders to your website.
 
 == Description ==
 
-Algori Video and Image Slider is a Gutenberg Block Plugin that enables you easily add image and video sliders to your website. 
+Algori Video and Image Slider is a Gutenberg Block Plugin that enables you easily add video and image sliders to your website. 
 
 Capture your site visitors' attention with compelling image slideshows, hero images/videos, header sliders and image carousels. **This will boost user engagement and increase revenue for your site**.
 
@@ -58,7 +58,7 @@ Have a look at the [Premium Plugin here](https://codecanyon.net/item/algori-imag
 1. Download the plugin, unzip it and move the unzipped folder to the "wp-content/plugins" directory in your WordPress installation.
 2. In your admin panel, go to Plugins and you'll find "Algori Image & Video Slider" in the plugins section.
 3. Click on the "Activate" button to use your new plugin right away.
-4. Go [here for a guide on how to add Image and Video Sliders to your WordPress site](http://www.kevinbazira.com/blog/article/algori-image-and-video-slider-pro-for-wordpress-gutenberg#documentation).
+4. Go [here for a guide on how to add video and image sliders to your WordPress site](http://www.kevinbazira.com/blog/article/algori-image-and-video-slider-pro-for-wordpress-gutenberg#documentation).
 5. Done :)
 
 == How to use == 
