@@ -1,19 +1,19 @@
-=== Algori Image and Video Slider ===
+=== Algori Video and Image Slider ===
 Contributors: kevinbazira
 Donate link: http://kevinbazira.com
 Tags: gutenberg, block, slider, image slider, image gallery, image carousel, slideshow, video slider, photo slider, hero image, header slider, responsive slider
-Requires at least: 4.9.6
+Requires at least: 4.9.8
 Tested up to: 5.0
 Requires PHP: 5.6.0
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GNU General Public License v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.en.html
 
-Algori Image and Video Slider is a Gutenberg Block Plugin that enables you easily add image and video sliders to your website.
+Algori Video and Image Slider is a Gutenberg Block Plugin that enables you easily add image and video sliders to your website.
 
 == Description ==
 
-Algori Image and Video Slider is a Gutenberg Block Plugin that enables you easily add image and video sliders to your website. 
+Algori Video and Image Slider is a Gutenberg Block Plugin that enables you easily add image and video sliders to your website. 
 
 Capture your site visitors' attention with compelling image slideshows, hero images/videos, header sliders and image carousels. **This will boost user engagement and increase revenue for your site**.
 
@@ -76,14 +76,14 @@ Have a look at the [Premium Plugin here](https://codecanyon.net/item/algori-imag
 
 == Screenshots ==
 
-1. Admin View - Algori Image and Video Slider Gutenberg Block in action. 
+1. Admin View - Algori Video and Image Slider Gutenberg Block in action. 
    ( Upload a video and image then adjust slider settings. )
 
 == Frequently Asked Questions ==
 
 = Can I use this plugin with other page builders am using? =
 
-Nope. Algori Image and Video Slider only works with Gutenberg.
+Nope. Algori Video and Image Slider only works with Gutenberg.
 
 = Why upgrade to Pro? =
 
@@ -93,13 +93,20 @@ Nope. Algori Image and Video Slider only works with Gutenberg.
 * **Absolutely Simple:** Plugin configuration is kept dead simple. Customization options designed to be intuitive to setup without being a rocket scientist.
 * **Optimized Loading time:** Loading time of PDF Viewer is optimized and if you compare with other plugins, you will find it less than that of all those plugins.
 * **Lightweight Code:** Our developers follow best coding practices to ensure efficient loading and performance.
-* **No Coding Skills Required:** Algori Image and Video Slider Plugin is easy to use and does almost everything for you without touching the code.
+* **No Coding Skills Required:** Algori Video and Image Slider Plugin is easy to use and does almost everything for you without touching the code.
 * We promise to provide **best quality** among other similar plugins. If you find our plugin lacking certain feature that you need, please feel free to email us and we will do our best to include that feature in our plugin as soon as possible.
 * **Priority support:** Our support team is working 24/7 to answer your inquiries as fast as possible.
 
 See more details here [Premium Plugin features](http://www.kevinbazira.com/blog/article/algori-image-and-video-slider-pro-for-wordpress-gutenberg)
 
 == Changelog ==
+
+= 1.0.1 - Nov 29 2018 =
+* Removed: 'wp-blocks' dependency from both external algori_image_video_slider-*-css
+* Removed: MediaPlaceholder labels name
+* Added: MediaPlaceholder labels instructions
+* Changed: all documentation from "Algori Image and Video Slider" to "Algori Video and Image Slider" for SEO purposes
+* Added: Social call to action into README.md
 
 = 1.0.0 - Oct 30 2018 =
 * Initial Release
