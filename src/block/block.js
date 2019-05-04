@@ -37,6 +37,7 @@ const {
 	BlockAlignmentToolbar,
 	MediaPlaceholder,
 	MediaUpload,
+	MediaUploadCheck,
 	AlignmentToolbar,
 	RichText,
 	URLInput,
@@ -50,6 +51,13 @@ const {
  */
 import './style.scss';
 import './editor.scss';
+
+
+/**
+ * Module Constants
+ */
+const ALLOWED_MEDIA_TYPES = [ 'video', 'image' ];
+
 
 const blockAttributes = {
 	title: {
@@ -171,7 +179,7 @@ registerBlockType( 'cgb/block-algori-image-video-slider', {
 	category: 'common', // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
 	
 	keywords: [ // Block search keywords
-		__( 'carousel slideshows' ), 
+		__( 'algori carousel slideshows' ), 
 		__( 'photo gallery' ), 
 		__( 'photos images videos' ), 
 	],
@@ -210,9 +218,9 @@ registerBlockType( 'cgb/block-algori-image-video-slider', {
 			return textBlockContent;
 		}
 		
-		const onSelectImages = ( imagesVideos ) => {
+		const onSelectImagesVideos = ( imagesVideos ) => {
 			setAttributes( {
-				sliderImagesVideos: imagesVideos.map( ( imageVideo ) => pick( imageVideo, [ 'alt', 'caption', 'id', 'link', 'url', 'type' ] ) ),
+				sliderImagesVideos: imagesVideos.map( ( imageVideo ) => pick( imageVideo, [ 'alt', 'caption', 'id', 'link', 'url', 'type', 'media_type' ] ) ),
 				textBlockContent: initialTextBlockContent( imagesVideos.length ),
 			} );
 		}
@@ -233,21 +241,23 @@ registerBlockType( 'cgb/block-algori-image-video-slider', {
 			<Fragment>
 				<BlockControls>
 					<Toolbar>
-						<MediaUpload
-							onSelect={ onSelectImages }
-							accept="*"
-							multiple
-							gallery
-							value={ sliderImagesVideos.map( ( imgOrVid ) => imgOrVid.id ) }
-							render={ ( { open } ) => (
-								<IconButton
-									className="components-toolbar__control"
-									label={ __( 'Edit Image Slider' ) }
-									icon="edit"
-									onClick={ open }
-								/>
-							) }
-						/>
+						<MediaUploadCheck>
+							<MediaUpload
+								onSelect={ onSelectImagesVideos }
+								allowedTypes={ ALLOWED_MEDIA_TYPES }
+								multiple
+								gallery
+								value={ sliderImagesVideos.map( ( imgOrVid ) => imgOrVid.id ) }
+								render={ ( { open } ) => (
+									<IconButton
+										className="components-toolbar__control"
+										label={ __( 'Edit Image Slider' ) }
+										icon="edit"
+										onClick={ open }
+									/>
+								) }
+							/>
+						</MediaUploadCheck>
 					</Toolbar>
 				</BlockControls>
 				{ !! sliderImagesVideos.length && (
@@ -288,9 +298,9 @@ registerBlockType( 'cgb/block-algori-image-video-slider', {
 							title: __('\u00A0Image Slider' ),
 							instructions: __( 'Drag images or videos, upload new ones or select files from your library.' ),
 						} }
-						onSelect={ onSelectImages }
+						onSelect={ onSelectImagesVideos }
 						accept="video/*, image/*"
-						allowedTypes={ [ 'video', 'image' ] }
+						allowedTypes={ ALLOWED_MEDIA_TYPES }
 						multiple
 						notices={ noticeUI }
 						onError={ noticeOperations.createErrorNotice }
@@ -309,13 +319,13 @@ registerBlockType( 'cgb/block-algori-image-video-slider', {
 						{ sliderImagesVideos.map( ( imgOrVid, index ) => (
 							<div key={ imgOrVid.id || imgOrVid.url } >
 								<figure className="algori-image-video-slider-slide-container">
-									{ ( imgOrVid.type === 'image' ) && // for image slides where type: "image"
+									{ ( imgOrVid.type === 'image' || imgOrVid.media_type === 'image' ) && // for image slides where media library type: "image" or formfileupload media_type: "image"
 										<img 
 											src={ imgOrVid.url } 
 											alt={ imgOrVid.alt }
 										/>
 									}
-									{ ( imgOrVid.type === 'video' ) && // for video slides where type: "video"
+									{ ( imgOrVid.type === 'video' || imgOrVid.media_type === 'file' ) && // for video slides where type: "video" or formfileupload media_type: "file". PS: it's "file" because we are trusting allowedTypes.
 										<video 
 											autoPlay={ ( !!videoSettings['autoplay'] ) ? "autoplay" : videoSettings['autoplay'] }
 											preload={ ( !!videoSettings['preload'] ) ? "preload" : videoSettings['preload'] }
@@ -424,13 +434,13 @@ registerBlockType( 'cgb/block-algori-image-video-slider', {
 				{ sliderImagesVideos.map( ( imgOrVid, index ) => (
 					<div key={ imgOrVid.id || imgOrVid.url } >
 						<figure className="algori-image-video-slider-slide-container">
-							{ ( imgOrVid.type === 'image' ) && // for image slides where type: "image"
+						    { ( imgOrVid.type === 'image' || imgOrVid.media_type === 'image' ) && // for image slides where media library type: "image" or formfileupload media_type: "image"
 								<img 
 									src={ imgOrVid.url } 
 									alt={ imgOrVid.alt }
 								/>
 							}
-							{ ( imgOrVid.type === 'video' ) && // for video slides where type: "video"
+							{ ( imgOrVid.type === 'video' || imgOrVid.media_type === 'file' ) && // for video slides where type: "video" or formfileupload media_type: "file". PS: it's "file" because we are trusting allowedTypes.
 								<video 
 									autoPlay={ ( !!videoSettings['autoplay'] ) ? "autoplay" : videoSettings['autoplay'] }
 									preload={ ( !!videoSettings['preload'] ) ? "preload" : videoSettings['preload'] }
@@ -478,6 +488,94 @@ registerBlockType( 'cgb/block-algori-image-video-slider', {
 		);
 		
 	},
+	
+	/**
+	 * Array of deprecated forms of this block.
+	 *
+	 * @link https://wordpress.org/gutenberg/handbook/block-api/deprecated-blocks/
+	 */
+	deprecated: [ 
+		{
+			attributes: {
+				...blockAttributes,
+			},
+			
+			save: ( { attributes, className } ) => {
+		
+				const { url, title, align, contentAlign, id, sliderImagesVideos, settings, selectedDotsClass, selectedArrowsClass, textBlockVisible, ctaButtonVisible, dimRatio, content, textBlockContent, videoSettings } = attributes;
+				
+				const classesForSlider = classnames(
+					selectedDotsClass, 
+					selectedArrowsClass, 
+				);
+				
+				const classesForTextBlockInSlider = classnames(
+					"algori-image-video-slider-slide-text-block", 
+					dimRatioToClass( dimRatio )
+				);
+				
+				return (
+					<div className={ classesForSlider } data-slick={ JSON.stringify( settings ) }>
+						{ sliderImagesVideos.map( ( imgOrVid, index ) => (
+							<div key={ imgOrVid.id || imgOrVid.url } >
+								<figure className="algori-image-video-slider-slide-container">
+									{ ( imgOrVid.type === 'image' ) && // for image slides where type: "image"
+										<img 
+											src={ imgOrVid.url } 
+											alt={ imgOrVid.alt }
+										/>
+									}
+									{ ( imgOrVid.type === 'video' ) && // for video slides where type: "video"
+										<video 
+											autoPlay={ ( !!videoSettings['autoplay'] ) ? "autoplay" : videoSettings['autoplay'] }
+											preload={ ( !!videoSettings['preload'] ) ? "preload" : videoSettings['preload'] }
+											controls={ ( !!videoSettings['controls'] ) ? "controls" : videoSettings['controls'] }
+											muted={ ( !!videoSettings['muted'] ) ? "muted" : videoSettings['muted'] }
+											loop={ ( !!videoSettings['loop'] ) ? "loop" : videoSettings['loop'] }
+											width="100%" 
+											height="100%"
+										>
+											<source src={ imgOrVid.url } type="video/mp4" /> 
+										</video>
+									}
+									{ !!textBlockVisible &&
+										<figcaption className={ classesForTextBlockInSlider } id={ `text-block-${ index }` } >
+											<span className= "algori-image-video-slider-slide-text-block-sub-heading-editor" >
+												<RichText.Content
+													tagName="h2"
+													className={ "algori-image-video-slider-slide-text-block-sub-heading" }
+													value={ textBlockContent[`text-block-sub-heading-${index}`] }
+												/>
+											</span>
+											<span className= "algori-image-video-slider-slide-text-block-paragraph-editor" >
+												<RichText.Content
+													tagName="p"
+													className={ "algori-image-video-slider-slide-text-block-paragraph" }
+													value={ textBlockContent[`text-block-paragraph-${index}`] }
+												/>
+											</span>
+											{ ctaButtonVisible &&
+												<span className= "algori-image-video-slider-slide-text-block-cta-editor" >
+													<a 
+														href = { textBlockContent[`text-block-cta-link-${index}`] } 
+														class="components-button is-button is-default algori-image-video-slider-slide-text-block-cta"
+													>
+														{ textBlockContent[`text-block-cta-text-${index}`] }
+													</a>
+												</span>
+											}
+										</figcaption>
+									}
+								</figure>
+							</div>
+						) ) }
+					</div>
+				);
+				
+			},
+		}
+	],
+	
 } );
 
 
