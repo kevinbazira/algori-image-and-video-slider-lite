@@ -5,7 +5,7 @@
  * Description: <strong>Algori Image and Video Slider</strong> is a Gutenberg Block Plugin that enables you easily add image and video sliders to your website. Capture your site visitors' attention with compelling video and image slideshows. <strong>This will boost user engagement and increase revenue for your site</strong>.
  * Author: Kevin Bazira
  * Author URI: http://kevinbazira.com/
- * Version: 1.0.2
+ * Version: 1.0.3
  * License: GPL2+
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  *
