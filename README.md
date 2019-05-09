@@ -6,7 +6,7 @@ Tags: gutenberg, block, slider, image slider, image gallery, image carousel, sli
 
 Requires at least: WP 5.0.0
 * Tested up to: WP 5.1.1
-* Stable tag: 1.0.2
+* Stable tag: 1.0.3
 * License: GNU General Public License v2 or later
 * License URI: https://www.gnu.org/licenses/gpl-2.0.en.html
 
@@ -101,6 +101,11 @@ Nope. Algori Video and Image Slider only works with Gutenberg.
 See more details here [Premium Plugin features](http://www.kevinbazira.com/blog/article/algori-image-and-video-slider-pro-for-wordpress-gutenberg)
 
 # Changelog
+
+= 1.0.3 - May 09 2019 =
+* Added dynamic video mime type detection for video slides
+* Added message with video download link in case browser doesn't support the HTML5 video tag
+* Added Spinner to show loading is in progress instead of blank slider
 
 = 1.0.2 - May 04 2019 =
 * Fixed media type verification bug on upload
