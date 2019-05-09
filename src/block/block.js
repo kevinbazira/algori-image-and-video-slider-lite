@@ -339,7 +339,7 @@ registerBlockType( 'cgb/block-algori-image-video-slider', {
 											height="100%"
 										>
 											
-											<source src={ imgOrVid.url } type={ imgOrVid.mime || imgOrVid.mime_type } /> 
+											<source src={ imgOrVid.url } type={ ( ( imgOrVid.mime || imgOrVid.mime_type ) !== "video/videopress" ) ? ( imgOrVid.mime || imgOrVid.mime_type ) : "video/mp4" } /> 
 									
 											{ __('Sorry, your browser doesn\'t support embedded videos, ') }
 											{ __('but don\'t worry, you can ') }
@@ -463,7 +463,7 @@ registerBlockType( 'cgb/block-algori-image-video-slider', {
 									height="100%"
 								>
 									
-									<source src={ imgOrVid.url } type={ imgOrVid.mime || imgOrVid.mime_type } /> 
+									<source src={ imgOrVid.url } type={ ( ( imgOrVid.mime || imgOrVid.mime_type ) !== "video/videopress" ) ? ( imgOrVid.mime || imgOrVid.mime_type ) : "video/mp4" } /> 
 									
 									{ __('Sorry, your browser doesn\'t support embedded videos, ') }
 									{ __('but don\'t worry, you can ') }
