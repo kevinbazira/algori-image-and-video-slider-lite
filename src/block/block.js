@@ -27,6 +27,7 @@ const {
 	Button,
 	Popover,
 	RangeControl,
+	Spinner,
 	withNotices } = wp.components; // import { IconButton, PanelBody, RangeControl, ToggleControl, Toolbar, withNotices } from '@wordpress/components';
 const { Fragment, createRef } = wp.element; // import { Fragment } from '@wordpress/element'; 
 const { __ } = wp.i18n; // Import __() from wp.i18n
@@ -42,6 +43,7 @@ const {
 	RichText,
 	URLInput,
 } = wp.editor; // Import * from @wordpress/editor 
+const { isBlobURL } = wp.blob;
 
 
 /**
@@ -220,7 +222,7 @@ registerBlockType( 'cgb/block-algori-image-video-slider', {
 		
 		const onSelectImagesVideos = ( imagesVideos ) => {
 			setAttributes( {
-				sliderImagesVideos: imagesVideos.map( ( imageVideo ) => pick( imageVideo, [ 'alt', 'caption', 'id', 'link', 'url', 'type', 'media_type' ] ) ),
+				sliderImagesVideos: imagesVideos.map( ( imageVideo ) => pick( imageVideo, [ 'alt', 'caption', 'id', 'link', 'url', 'type', 'media_type', 'mime', 'mime_type' ] ) ),
 				textBlockContent: initialTextBlockContent( imagesVideos.length ),
 			} );
 		}
@@ -318,6 +320,7 @@ registerBlockType( 'cgb/block-algori-image-video-slider', {
 					<Slider className={ classesForSlider } { ...settings } afterChange={ updateCurrentSlide } >
 						{ sliderImagesVideos.map( ( imgOrVid, index ) => (
 							<div key={ imgOrVid.id || imgOrVid.url } >
+								{ isBlobURL( imgOrVid.url ) && <Spinner /> }
 								<figure className="algori-image-video-slider-slide-container">
 									{ ( imgOrVid.type === 'image' || imgOrVid.media_type === 'image' ) && // for image slides where media library type: "image" or formfileupload media_type: "image"
 										<img 
@@ -335,7 +338,16 @@ registerBlockType( 'cgb/block-algori-image-video-slider', {
 											width="100%" 
 											height="100%"
 										>
-											<source src={ imgOrVid.url } type="video/mp4" /> 
+											
+											<source src={ imgOrVid.url } type={ imgOrVid.mime || imgOrVid.mime_type } /> 
+									
+											{ __('Sorry, your browser doesn\'t support embedded videos, ') }
+											{ __('but don\'t worry, you can ') }
+											<a href={ imgOrVid.url } target="_blank" rel="noopener noreferrer" tabindex="0">
+												{ __('download it here') }
+											</a> 
+											{ __(' and watch it with your favorite video player!') }
+											
 										</video>
 									}
 									{ !!textBlockVisible &&
@@ -450,7 +462,16 @@ registerBlockType( 'cgb/block-algori-image-video-slider', {
 									width="100%" 
 									height="100%"
 								>
-									<source src={ imgOrVid.url } type="video/mp4" /> 
+									
+									<source src={ imgOrVid.url } type={ imgOrVid.mime || imgOrVid.mime_type } /> 
+									
+									{ __('Sorry, your browser doesn\'t support embedded videos, ') }
+									{ __('but don\'t worry, you can ') }
+									<a href={ imgOrVid.url } target="_blank" rel="noopener noreferrer" tabindex="0">
+										{ __('download it here') }
+									</a> 
+									{ __(' and watch it with your favorite video player!') }
+											
 								</video>
 							}
 							{ !!textBlockVisible &&
@@ -495,6 +516,81 @@ registerBlockType( 'cgb/block-algori-image-video-slider', {
 	 * @link https://wordpress.org/gutenberg/handbook/block-api/deprecated-blocks/
 	 */
 	deprecated: [ 
+		{
+			save: ( { attributes, className } ) => {
+		
+				const { url, title, align, contentAlign, id, sliderImagesVideos, settings, selectedDotsClass, selectedArrowsClass, textBlockVisible, ctaButtonVisible, dimRatio, content, textBlockContent, videoSettings } = attributes;
+				
+				const classesForSlider = classnames(
+					selectedDotsClass, 
+					selectedArrowsClass, 
+				);
+				
+				const classesForTextBlockInSlider = classnames(
+					"algori-image-video-slider-slide-text-block", 
+					dimRatioToClass( dimRatio )
+				);
+				
+				return (
+					<div className={ classesForSlider } data-slick={ JSON.stringify( settings ) }>
+						{ sliderImagesVideos.map( ( imgOrVid, index ) => (
+							<div key={ imgOrVid.id || imgOrVid.url } >
+								<figure className="algori-image-video-slider-slide-container">
+									{ ( imgOrVid.type === 'image' || imgOrVid.media_type === 'image' ) && // for image slides where media library type: "image" or formfileupload media_type: "image"
+										<img 
+											src={ imgOrVid.url } 
+											alt={ imgOrVid.alt }
+										/>
+									}
+									{ ( imgOrVid.type === 'video' || imgOrVid.media_type === 'file' ) && // for video slides where type: "video" or formfileupload media_type: "file". PS: it's "file" because we are trusting allowedTypes.
+										<video 
+											autoPlay={ ( !!videoSettings['autoplay'] ) ? "autoplay" : videoSettings['autoplay'] }
+											preload={ ( !!videoSettings['preload'] ) ? "preload" : videoSettings['preload'] }
+											controls={ ( !!videoSettings['controls'] ) ? "controls" : videoSettings['controls'] }
+											muted={ ( !!videoSettings['muted'] ) ? "muted" : videoSettings['muted'] }
+											loop={ ( !!videoSettings['loop'] ) ? "loop" : videoSettings['loop'] }
+											width="100%" 
+											height="100%"
+										>
+											<source src={ imgOrVid.url } type="video/mp4" /> 
+										</video>
+									}
+									{ !!textBlockVisible &&
+										<figcaption className={ classesForTextBlockInSlider } id={ `text-block-${ index }` } >
+											<span className= "algori-image-video-slider-slide-text-block-sub-heading-editor" >
+												<RichText.Content
+													tagName="h2"
+													className={ "algori-image-video-slider-slide-text-block-sub-heading" }
+													value={ textBlockContent[`text-block-sub-heading-${index}`] }
+												/>
+											</span>
+											<span className= "algori-image-video-slider-slide-text-block-paragraph-editor" >
+												<RichText.Content
+													tagName="p"
+													className={ "algori-image-video-slider-slide-text-block-paragraph" }
+													value={ textBlockContent[`text-block-paragraph-${index}`] }
+												/>
+											</span>
+											{ ctaButtonVisible &&
+												<span className= "algori-image-video-slider-slide-text-block-cta-editor" >
+													<a 
+														href = { textBlockContent[`text-block-cta-link-${index}`] } 
+														class="components-button is-button is-default algori-image-video-slider-slide-text-block-cta"
+													>
+														{ textBlockContent[`text-block-cta-text-${index}`] }
+													</a>
+												</span>
+											}
+										</figcaption>
+									}
+								</figure>
+							</div>
+						) ) }
+					</div>
+				);
+				
+			},
+		},
 		{
 			attributes: {
 				...blockAttributes,
