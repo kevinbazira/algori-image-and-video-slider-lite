@@ -82,9 +82,13 @@ Have a look at the [Premium Plugin here](https://codecanyon.net/item/algori-imag
 
 # Frequently Asked Questions
 
-= Can I use this plugin with other page builders am using? =
+= Can I use this plugin with other page builders I am using? =
 
 Nope. Algori Video and Image Slider only works with Gutenberg.
+
+= What theme works with Algori Video and Image Slider? =
+
+Most WordPress themes that are optimized for Gutenberg will work well with Algori Video and Image Slider. To get a full experience of the next-generation WordPress block editor, you’ll need a Gutenberg-ready WordPress theme, like [Algori Blogger](https://wordpress.org/themes/algori-blogger/).
 
 = Why upgrade to Pro? =
 
