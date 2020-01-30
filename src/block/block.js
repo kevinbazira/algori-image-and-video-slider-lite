@@ -42,7 +42,7 @@ const {
 	AlignmentToolbar,
 	RichText,
 	URLInput,
-} = wp.editor; // Import * from @wordpress/editor 
+} = wp.blockEditor; // Import * from @wordpress/blockEditor 
 const { isBlobURL } = wp.blob;
 
 
@@ -187,7 +187,6 @@ registerBlockType( 'cgb/block-algori-image-video-slider', {
 	],
 	
 	attributes: blockAttributes,  // Block attributes for editing in the block inspector.
-	
 
 	/**
 	 * The edit function describes the structure of your block in the context of the editor.
@@ -196,6 +195,9 @@ registerBlockType( 'cgb/block-algori-image-video-slider', {
 	 * The "edit" property must be a valid function.
 	 *
 	 * @link https://wordpress.org/gutenberg/handbook/block-api/block-edit-save/
+	 *
+	 * @param {Object} props Props.
+	 * @returns {Mixed} JSX Component.
 	 */
 	edit: withNotices( ( { attributes, setAttributes, isSelected, className, noticeOperations, noticeUI } ) => {
 		
@@ -425,8 +427,10 @@ registerBlockType( 'cgb/block-algori-image-video-slider', {
 	 * The "save" property must be specified and must be a valid function.
 	 *
 	 * @link https://wordpress.org/gutenberg/handbook/block-api/block-edit-save/
+	 *
+	 * @param {Object} props Props.
+	 * @returns {Mixed} JSX Frontend HTML.
 	 */
-	 
 	save: ( { attributes, className } ) => {
 		
 		const { url, title, align, contentAlign, id, sliderImagesVideos, settings, selectedDotsClass, selectedArrowsClass, textBlockVisible, ctaButtonVisible, dimRatio, content, textBlockContent, videoSettings } = attributes;
