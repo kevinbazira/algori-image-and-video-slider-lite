@@ -5,8 +5,8 @@ Contributors: [Kevin Bazira](http://kevinbazira.com)
 Tags: gutenberg, block, slider, image slider, image gallery, image carousel, slideshow, video slider, photo slider, hero image, header slider, responsive slider
 
 Requires at least: WP 5.0.0
-* Tested up to: WP 5.2
-* Stable tag: 1.0.3
+* Tested up to: WP 5.3
+* Stable tag: 1.0.4
 * License: GNU General Public License v2 or later
 * License URI: https://www.gnu.org/licenses/gpl-2.0.en.html
 
@@ -106,6 +106,13 @@ See more details here [Premium Plugin features](http://www.kevinbazira.com/blog/
 
 # Changelog
 
+= 1.0.4 - Jan 30 2020 =
+* Upgraded cgb-scripts from 1.13.0 to 1.22.0
+* Updated deprecated wp.editor.BlockControls to wp.blockEditor.BlockControls.
+* Updated deprecated wp.editor.MediaPlaceholder to wp.blockEditor.MediaPlaceholder.
+* Updated deprecated wp.editor.MediaUploadCheck to wp.blockEditor.MediaUploadCheck.
+* Updated deprecated wp.editor.MediaUpload to wp.blockEditor.MediaUpload.
+
 = 1.0.3 - May 09 2019 =
 * Added dynamic video mime type detection for video slides
 * Added message with video download link in case browser doesn't support the HTML5 video tag
@@ -128,7 +135,7 @@ See more details here [Premium Plugin features](http://www.kevinbazira.com/blog/
 = 1.0.0 - Oct 30 2018 =
 * Initial Release
 
-Algori Video and Image Slider WordPress Plugin, Copyright 2019 Kevin Bazira<br/>
+Algori Video and Image Slider WordPress Plugin, Copyright 2020 Kevin Bazira<br/>
 Algori Video and Image Slider is distributed under the terms of the GNU GPL<br/><br/>
 
 
