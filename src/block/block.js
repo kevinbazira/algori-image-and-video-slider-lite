@@ -17,10 +17,10 @@ import classnames from 'classnames';
  * WordPress dependencies
  */
 const { 
-	IconButton, 
 	PanelBody,
 	TextControl,  
 	Toolbar,
+	ToolbarButton,
 	Tooltip,
 	ToggleControl, 
 	RadioControl,
@@ -28,7 +28,7 @@ const {
 	Popover,
 	RangeControl,
 	Spinner,
-	withNotices } = wp.components; // import { IconButton, PanelBody, RangeControl, ToggleControl, Toolbar, withNotices } from '@wordpress/components';
+	withNotices } = wp.components; // import { PanelBody, RangeControl, ToggleControl, Toolbar, ToolbarButton, withNotices } from '@wordpress/components';
 const { Fragment, createRef } = wp.element; // import { Fragment } from '@wordpress/element'; 
 const { __ } = wp.i18n; // Import __() from wp.i18n
 const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
@@ -253,8 +253,7 @@ registerBlockType( 'cgb/block-algori-image-video-slider', {
 								gallery
 								value={ sliderImagesVideos.map( ( imgOrVid ) => imgOrVid.id ) }
 								render={ ( { open } ) => (
-									<IconButton
-										className="components-toolbar__control"
+									<ToolbarButton
 										label={ __( 'Edit Image Slider' ) }
 										icon="edit"
 										onClick={ open }
