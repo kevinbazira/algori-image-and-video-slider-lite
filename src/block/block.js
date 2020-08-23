@@ -186,6 +186,33 @@ registerBlockType( 'algori-image-video-slider/block-algori-image-video-slider', 
 		__( 'photos images videos' ), 
 	],
 	
+	example: {
+		attributes: {
+			sliderImagesVideos: [
+				  {
+					"url": cgbGlobal_AlgoriImageVideoSlider.pluginDirUrl + "algori-image-video-slider-example-1.jpg",
+					"type": "image",
+					"mime": "image/jpeg"
+				  },
+				  {
+					"url": cgbGlobal_AlgoriImageVideoSlider.pluginDirUrl + "algori-image-video-slider-example-2.jpg",
+					"type": "image",
+					"mime": "image/jpeg"
+				  },
+				  {
+					"url": cgbGlobal_AlgoriImageVideoSlider.pluginDirUrl + "algori-image-video-slider-example-3.jpg",
+					"type": "image",
+					"mime": "image/jpeg"
+				  }
+			],
+			settings: {
+				dots: true,
+				arrows: true,
+				autoplay: true
+			},
+		},
+	},
+	
 	attributes: blockAttributes,  // Block attributes for editing in the block inspector.
 
 	/**
@@ -238,7 +265,6 @@ registerBlockType( 'algori-image-video-slider/block-algori-image-video-slider', 
 			"algori-image-video-slider-slide-text-block", 
 			dimRatioToClass( dimRatio )
 		);
-		
 		
 		
 		const controls = ( // Set Block and Inspector Controls
