@@ -1,0 +1,13 @@
+{
+	"name": "algori-image-video-slider/block-algori-image-video-slider",
+	"title": "Algori Video and Image Slider",
+	"category": "media",
+	"description": "Add beautiful video and image sliders to your WordPress website with ease",
+	"supports": {
+		"align": true
+	},
+	"textdomain": "algori-image-video-slider",
+	"script": "file:./dist/blocks.build.js",
+	"editorStyle": "file:./dist/blocks.editor.build.css",
+	"style": "file:./dist/blocks.style.build.css"
+}
