@@ -157,6 +157,13 @@ const blockAttributes = {
 };
 
 /**
+ * Cater for block categories in older versions of WordPress i.e < WP 5.5
+ */
+const hasFormattingCategory = wp.blocks.getCategories().some( function( category ) {
+	return category.slug === 'common';
+} );
+
+/**
  * Register: aa Gutenberg Block.
  *
  * Registers a new block provided a unique name and an object defining its
@@ -178,7 +185,7 @@ registerBlockType( 'algori-image-video-slider/block-algori-image-video-slider', 
 	
 	icon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M1 5h2v14H1zm4 0h2v14H5zm17 0H10c-.55 0-1 .45-1 1v12c0 .55.45 1 1 1h12c.55 0 1-.45 1-1V6c0-.55-.45-1-1-1zM11 17l2.5-3.15L15.29 16l2.5-3.22L21 17H11z"/></svg>, // Block icon from Material Design Icons → https://material.io/tools/icons/
 	
-	category: 'common', // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
+	category: hasFormattingCategory ? 'common' : 'media', // Block category — Group blocks together based on common traits E.g. text, media, design, widgets, embeds, reusable.
 	
 	keywords: [ // Block search keywords
 		__( 'algori carousel slideshows' ), 
