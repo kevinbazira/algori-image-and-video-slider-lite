@@ -32,7 +32,7 @@ function algori_image_video_slider_cgb_block_assets() { // phpcs:ignore
 	// Enqueue Algori Image Video Slider Scripts.
 	wp_enqueue_script('jquery');
 	wp_enqueue_script( 'algori_image_video_slider-cgb-slick-js', plugins_url( '/dist/slick/slick.js', dirname( __FILE__ ) ) );
-	wp_add_inline_script( 'algori_image_video_slider-cgb-slick-js', 'jQuery( document ).ready(function($) { $(".wp-block-cgb-block-algori-image-video-slider").slick({ }); });' );
+	wp_add_inline_script( 'algori_image_video_slider-cgb-slick-js', 'jQuery( document ).ready(function($) { $(".wp-block-algori-image-video-slider-block-algori-image-video-slider").slick({ }); });' );
 	
 	
 	// Enqueue Algori Image Video Slider Styles.
@@ -97,7 +97,7 @@ function algori_image_video_slider_cgb_block_assets() { // phpcs:ignore
 	 * @since 1.16.0
 	 */
 	register_block_type(
-		'cgb/block-algori-image-video-slider', array(
+		'algori-image-video-slider/block-algori-image-video-slider', array(
 			// Enqueue blocks.style.build.css on both frontend & backend.
 			'style'         => 'algori_image_video_slider-cgb-style-css',
 			// Enqueue blocks.build.js in the editor only.

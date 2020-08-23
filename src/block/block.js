@@ -169,7 +169,7 @@ const blockAttributes = {
  * @return {?WPBlock}          The block, if it has been successfully
  *                             registered; otherwise `undefined`.
  */
-registerBlockType( 'cgb/block-algori-image-video-slider', {
+registerBlockType( 'algori-image-video-slider/block-algori-image-video-slider', {
 	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
 	
 	title: __( 'Image & Video Slider' ), // Block title.
