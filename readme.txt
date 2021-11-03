@@ -3,7 +3,7 @@ Contributors: kevinbazira
 Donate link: http://kevinbazira.com
 Tags: gutenberg, block, block editor, slider, image slider, image gallery, image carousel, slideshow, video slider, photo slider, hero image, header slider, responsive slider
 Requires at least: 5.0.0
-Tested up to: 5.5
+Tested up to: 5.8.1
 Requires PHP: 5.6.0
 Stable tag: 1.0.6
 License: GNU General Public License v2 or later
