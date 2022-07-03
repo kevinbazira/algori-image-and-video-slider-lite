@@ -78,7 +78,7 @@ function algori_image_video_slider_cgb_block_assets() { // phpcs:ignore
 	// WP Localized globals. Use dynamic PHP stuff in JavaScript via `cgbGlobal` object.
 	wp_localize_script(
 		'algori_image_video_slider-cgb-block-js',
-		'cgbGlobal', // Array containing dynamic data for a JS Global.
+		'cgbGlobal_AlgoriImageVideoSlider', // Array containing dynamic data for a JS Global.
 		[
 			'pluginDirPath' => plugin_dir_path( __DIR__ ),
 			'pluginDirUrl'  => plugin_dir_url( __DIR__ ),
